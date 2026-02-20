@@ -4,7 +4,11 @@ pipeline {
     stages {
         stage('Run Python Script') {
             steps {
-                sh 'python3 test.py'
+                sh '''
+                echo "Running Python script..."
+                python3 test.py
+                echo "Python script execution completed."
+                '''
             }
         }
     }
@@ -14,7 +18,7 @@ pipeline {
             emailext(
                 to: 'vidyavn1234@gmail.com',
                 subject: 'Jenkins Job SUCCESS',
-                body: 'The Jenkins pipeline executed successfully and the Python script ran without errors.'
+                body: 'The Jenkins pipeline executed successfully. Please check Jenkins console output for details.'
             )
         }
 
@@ -22,7 +26,7 @@ pipeline {
             emailext(
                 to: 'vidyavn1234@gmail.com',
                 subject: 'Jenkins Job FAILURE',
-                body: 'The Jenkins pipeline failed. Please check the console output for error details.'
+                body: 'The Jenkins pipeline failed. Please check Jenkins console output for error details.'
             )
         }
     }
