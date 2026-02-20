@@ -12,3 +12,4 @@ for name in names:
 
 print("Alphabet 'a' repeated:", count)
 
+
